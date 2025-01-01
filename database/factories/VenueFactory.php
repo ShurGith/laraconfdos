@@ -1,30 +1,41 @@
 <?php
 
-namespace Database\Factories;
+    namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\Venue;
+    use App\Models\Venue;
+    use Illuminate\Database\Eloquent\Factories\Factory;
 
-class VenueFactory extends Factory
-{
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Venue::class;
-
-    /**
-     * Define the model's default state.
-     */
-    public function definition(): array
+    class VenueFactory extends Factory
     {
-        return [
-            'name' => $this->faker->name(),
-            'city' => $this->faker->city(),
-            'country' => $this->faker->country(),
-            'postal_code' => $this->faker->postcode(),
-        ];
+        /**
+         * The name of the factory's corresponding model.
+         *
+         * @var string
+         */
+        protected $model = Venue::class;
+
+        /**
+         * Define the model's default state.
+         */
+        public function definition(): array
+        {
+            dd(self::region());
+            // $region = $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']);
+            return [
+//                'name' => $this->faker->name() . '- ' . $region,
+//                'city' => $this->faker->city(),
+//                'country' => $this->faker->country(),
+//                'postal_code' => $this->faker->postcode(),
+//                'region' => $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']), $region
+            ];
+        }
+
+        public static function region(): string
+        {
+            $sitios = ['US', 'EU', 'AU', 'India', 'Online'];
+            $value = array_rand($sitios);
+            //dd($sitios[$value]);
+            return $sitios[$value];
+
+        }
     }
-}

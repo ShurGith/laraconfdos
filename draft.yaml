@@ -1,12 +1,12 @@
 models:
   Conference:
     name: string
-    description: string
-    start_date: datetime
-    end_date: datetime
+    description: text
+    is_active: boolean
     status: string
     region: string
-    is_active: boolean
+    start_date: datetime
+    end_date: datetime
     venue_id: unsignedInteger nullable
     relationships:
       belongsTo: Venue
@@ -17,6 +17,7 @@ models:
     city: string
     country: string
     postal_code: string
+    region: string
     relationships:
       hasMany: Conference
 
