@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conferences', function (Blueprint $table) {
+        Schema::create('talks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->string('status');
-            $table->string('region');
-            $table->foreignId('venue_id')->nullable();
+            $table->string('title');
+            $table->text('abstract');
+            $table->foreignId('speaker_id');
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conferences');
+        Schema::dropIfExists('talks');
     }
 };

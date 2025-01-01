@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('bio');
+            $table->text('bio');
             $table->string('twitter_handle');
             $table->timestamps();
         });

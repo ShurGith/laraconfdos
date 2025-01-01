@@ -23,6 +23,7 @@ class Conference extends Model
         'end_date',
         'status',
         'region',
+        'is_active',
         'venue_id',
     ];
 
@@ -30,6 +31,7 @@ class Conference extends Model
         'id' => 'integer',
         'start_date' => 'datetime',
         'end_date' => 'datetime',
+        'is_active' => 'boolean',
         'venue_id' => 'integer',
     ];
 
