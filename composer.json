@@ -10,9 +10,11 @@
         "filament/filament": "^3.2",
         "inspector-apm/inspector-laravel": "^4.9",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "saasykit/filament-oops": "^1.0"
     },
     "require-dev": {
+        "agencetwogether/hookshelper": "^0.0.1",
         "fakerphp/faker": "^1.23",
         "laravel-shift/blueprint": "^2.10",
         "laravel/pail": "^1.1",

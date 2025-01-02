@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dab6a72efb3ba648061e6ae9c99c4d34",
+    "content-hash": "4373df7f82bfec0f176618704f16c8b1",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4833,6 +4833,84 @@
             "time": "2024-02-26T18:08:49+00:00"
         },
         {
+            "name": "saasykit/filament-oops",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saasykit/filament-oops.git",
+                "reference": "7d8592b32673f5206b4c4ad0907b7abc7a913359"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saasykit/filament-oops/zipball/7d8592b32673f5206b4c4ad0907b7abc7a913359",
+                "reference": "7d8592b32673f5206b4c4ad0907b7abc7a913359",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.1",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentOops": "Saasykit\\FilamentOops\\Facades\\FilamentOops"
+                    },
+                    "providers": [
+                        "Saasykit\\FilamentOops\\FilamentOopsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Saasykit\\FilamentOops\\": "src/",
+                    "Saasykit\\FilamentOops\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SaaSykit",
+                    "email": "hi@saasykit.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Never accidentally edit your Filament production panel again! Filament Oops displays a clear 'Production' warning, helping you avoid costly mistakes and keeping your development safe.",
+            "homepage": "https://github.com/saasykit/filament-oops",
+            "keywords": [
+                "filament-oops",
+                "laravel",
+                "saasykit"
+            ],
+            "support": {
+                "issues": "https://github.com/saasykit/filament-oops/issues",
+                "source": "https://github.com/saasykit/filament-oops"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/saasykit",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-11-10T21:49:52+00:00"
+        },
+        {
             "name": "spatie/color",
             "version": "1.7.0",
             "source": {
@@ -7580,6 +7658,79 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "agencetwogether/hookshelper",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agencetwogether/hooksHelper.git",
+                "reference": "5ae5afcdaeaef42822c723323b9dac321c3d2b15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agencetwogether/hooksHelper/zipball/5ae5afcdaeaef42822c723323b9dac321c3d2b15",
+                "reference": "5ae5afcdaeaef42822c723323b9dac321c3d2b15",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.1",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Agencetwogether\\HooksHelper\\HooksHelperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Agencetwogether\\HooksHelper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Max",
+                    "email": "contact@agencetwogether.fr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple plugin to toggle display hooks available in current page.",
+            "homepage": "https://github.com/agencetwogether/hookshelper",
+            "keywords": [
+                "agencetwogether",
+                "filament",
+                "filamentphp",
+                "helper",
+                "hooks",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/agencetwogether/hookshelper/issues",
+                "source": "https://github.com/agencetwogether/hookshelper"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/agencetwogether",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-11-22T22:33:48+00:00"
+        },
         {
             "name": "brianium/paratest",
             "version": "v7.7.0",
@@ -11534,12 +11685,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }
