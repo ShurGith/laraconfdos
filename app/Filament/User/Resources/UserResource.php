@@ -31,10 +31,10 @@
                     Forms\Components\DateTimePicker::make('email_verified_at'),
                     Forms\Components\FileUpload::make('Avatar')
                         ->getUploadedFileNameForStorageUsing(
-                            fn(TemporaryUploadedFile $file): string => (string)str($record->id . '.' . $file->getClientOriginalExtension())
-                                ->prepend($record->name . '_'),
+                            fn(TemporaryUploadedFile $file): string => (string)str($file->getClientOriginalExtension())
+                                ->prepend($record->name . '_' . now()->timestamp . '.'),
                         )
-                        ->directory('images/users/avatars/')
+                        ->directory('avatars')
                         ->image()
                         ->avatar()
                         ->imageEditor()
