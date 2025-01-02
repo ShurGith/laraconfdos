@@ -9,6 +9,8 @@
     use Filament\Resources\Resource;
     use Filament\Tables;
     use Filament\Tables\Table;
+    use Illuminate\Support\Facades\Blade;
+    use Illuminate\Support\HtmlString;
 
     class VenueResource extends Resource
     {
@@ -19,13 +21,17 @@
         public static function form(Form $form): Form
         {
             return $form
-                ->schema([Venue::getForm()]); //Creado a partir de un formulario en el modelo de Venue public static function getForm(): array
+                ->schema(Venue::getForm()); //Creado a partir de un formulario en el modelo de Venue public static function getForm(): array
         }
 
         public static function table(Table $table): Table
         {
             return $table
                 ->columns([
+                    Tables\Columns\TextColumn::make('media_count')
+                        ->label(new HtmlString(Blade::render('<x-heroicon-o-paper-clip class="w-6 h-6" />')))
+                        ->counts('media')
+                        ->tooltip(fn(Venue $record): string => "number of attachments: {$record->media_count}"),
                     Tables\Columns\TextColumn::make('name')
                         ->searchable(),
                     Tables\Columns\TextColumn::make('city')
@@ -49,6 +55,7 @@
                     //
                 ])
                 ->actions([
+                    Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
                 ])
                 ->bulkActions([

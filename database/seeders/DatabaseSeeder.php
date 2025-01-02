@@ -21,12 +21,12 @@
          */
         public function run(): void
         {
-/*            // User::factory(10)->create();
-            User::factory()->create([
-                'name' => 'JuanJota',
-                'email' => 'esnola@gmail.com',
-                'password' => Hash::make('12345678'),
-            ]);*/
+            /*            // User::factory(10)->create();
+                        User::factory()->create([
+                            'name' => 'JuanJota',
+                            'email' => 'esnola@gmail.com',
+                            'password' => Hash::make('12345678'),
+                        ]);*/
             //dd($user);
 //            dump($user);
 //            ray($user);
