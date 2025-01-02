@@ -36,25 +36,44 @@
             return [
                 TextInput::make('name')
                     ->required(),
+                FileUpload::make('avatar')
+                    ->label("Esta es tu imagen de perfil")
+                    ->avatar()
+                    ->directory('images/avatars/speakers')
+                    ->preserveFilenames()
+                    ->imageEditor()
+                    //->circleCropper()
+                    ->maxSize(1024 * 1024 * 10),
                 TextInput::make('email')
                     ->email()
                     ->required(),
-                FileUpload::make('avatar'),
                 Textarea::make('bio')
                     ->required()
                     ->columnSpanFull(),
                 TextInput::make('twitter_handle')
                     ->required(),
                 CheckboxList::make('qualifications')
-                    ->options([
-                        'Speaker' => 'Speaker',
-                    ])
-                    //->descriptions('Options')
-                    ->required()
+                    ->columnSpanFull()
                     ->searchable()
                     ->bulkToggleable()
-                    ->columns(3)
-                    ->columnSpanFull(),
+                    ->options([
+                            'business-leader' => 'Business Leader',
+                            'charisma' => 'Charismatic Speaker',
+                            'first-time' => 'First Time Speaker',
+                            'hometown-hero' => 'Hometown Hero',
+                            'humanitarian' => 'Works in Humanitarian Field',
+                            'laracasts-contributor' => 'Laracasts Contributor',
+                            'twitter-influencer' => 'Large Twitter Following',
+                            'youtube-influencer' => 'Large YouTube Following',
+                            'open-source' => 'Open Source Creator / Maintainer',
+                            'unique-perspective' => 'Unique Perspective'
+                        ]
+                    )
+                    ->descriptions([
+                        'business-leader' => 'Here is a nice long description',
+                        'charisma' => 'This is even more information about why you should pick this one',
+                    ])
+                    ->columns(3),
             ];
         }
 
