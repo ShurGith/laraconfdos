@@ -1,39 +1,39 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Relations\BelongsTo;
+    use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Talk extends Model
-{
-    use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'title',
-        'abstract',
-        'speaker_id',
-    ];
-
-    protected $casts = [
-        'id' => 'integer',
-        'speaker_id' => 'integer',
-    ];
-
-    public function speaker(): BelongsTo
+    class Talk extends Model
     {
-        return $this->belongsTo(Speaker::class);
-    }
+        use HasFactory;
 
-    public function conferences(): BelongsToMany
-    {
-        return $this->belongsToMany(Conference::class);
+        /**
+         * The attributes that are mass assignable.
+         *
+         * @var array
+         */
+        protected $fillable = [
+            'title',
+            'abstract',
+            'speaker_id',
+        ];
+
+        protected $casts = [
+            'id' => 'integer',
+            'speaker_id' => 'integer',
+        ];
+
+        public function speaker(): BelongsTo
+        {
+            return $this->belongsTo(Speaker::class);
+        }
+
+        public function conferences(): BelongsToMany
+        {
+            return $this->belongsToMany(Conference::class);
+        }
     }
-}

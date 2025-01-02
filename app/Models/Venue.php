@@ -2,7 +2,9 @@
 
     namespace App\Models;
 
-    use App\Enum\Region;
+    use App\Enums\Region;
+    use Filament\Forms\Components\Select;
+    use Filament\Forms\Components\TextInput;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,22 +13,31 @@
     {
         use HasFactory;
 
-        /**
-         * The attributes that are mass assignable.
-         *
-         * @var array
-         */
-        protected $fillable = [
-            'name',
-            'city',
-            'country',
-            'postal_code',
-        ];
-
         protected $casts = [
             'id' => 'integer',
             'region' => Region::class,
         ];
+
+        public static function getForm(): array
+        {
+            return [
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('city')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('country')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('postal_code')
+                    ->required()
+                    ->maxLength(255),
+                Select::make('region')
+                    ->enum(Region::class)
+                    ->options(Region::class),
+            ];
+        }
 
         public function conferences(): HasMany
         {

@@ -19,14 +19,14 @@
          */
         public function definition(): array
         {
-            dd(self::region());
+            $region = self::region();
             // $region = $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']);
             return [
-//                'name' => $this->faker->name() . '- ' . $region,
-//                'city' => $this->faker->city(),
-//                'country' => $this->faker->country(),
-//                'postal_code' => $this->faker->postcode(),
-//                'region' => $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']), $region
+                'name' => $this->faker->name() . '- ' . $region,
+                'city' => $this->faker->city(),
+                'country' => $this->faker->country(),
+                'postal_code' => $this->faker->postcode(),
+                'region' => $region, //$this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online'])
             ];
         }
 

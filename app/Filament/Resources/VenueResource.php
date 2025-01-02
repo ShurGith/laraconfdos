@@ -2,11 +2,9 @@
 
     namespace App\Filament\Resources;
 
-    use App\Enum\Region;
     use App\Filament\Resources\VenueResource\Pages;
     use App\Filament\Resources\VenueResource\RelationManagers;
     use App\Models\Venue;
-    use Filament\Forms;
     use Filament\Forms\Form;
     use Filament\Resources\Resource;
     use Filament\Tables;
@@ -21,20 +19,7 @@
         public static function form(Form $form): Form
         {
             return $form
-                ->schema([
-                    Forms\Components\TextInput::make('name')
-                        ->required(),
-                    Forms\Components\TextInput::make('city')
-                        ->required(),
-                    Forms\Components\TextInput::make('country')
-                        ->required(),
-                    Forms\Components\TextInput::make('postal_code')
-                        ->required(),
-                    Forms\Components\Select::make('region')
-                        ->enum(Region::class)
-                        ->options(Region::class)
-                        ->required(),
-                ]);
+                ->schema([Venue::getForm()]); //Creado a partir de un formulario en el modelo de Venue public static function getForm(): array
         }
 
         public static function table(Table $table): Table
