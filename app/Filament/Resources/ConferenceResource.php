@@ -46,11 +46,18 @@
                     TextColumn::make('name')
                         ->searchable(),
                     TextColumn::make('description')
+                        ->limit(50)
                         ->html()
                         ->searchable(),
                     Tables\Columns\IconColumn::make('is_active')
                         ->boolean(),
                     TextColumn::make('status')
+                        ->color(fn (string $state): string => match ($state){
+                                'draft' => 'info',
+                                'archived' => 'danger',
+                                'published' => 'success',
+                        })
+                        ->badge()
                         ->searchable(),
                     TextColumn::make('region')
                         ->searchable(),
