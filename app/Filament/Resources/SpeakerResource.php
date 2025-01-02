@@ -14,8 +14,9 @@
     {
         protected static ?string $model = Speaker::class;
 
-        protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+        protected static ?string $navigationIcon = 'heroicon-o-megaphone';
+        protected static ?string $navigationGroup = 'Configuraciones';
+        protected static ?int $navigationSort = 1;
         public static function form(Form $form): Form
         {
             return $form

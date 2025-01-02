@@ -2,7 +2,9 @@
 
     namespace Database\Seeders;
 
+    use App\Models\Conference;
     use App\Models\Speaker;
+    use App\Models\Talk;
     use App\Models\User;
     use App\Models\Venue;
     use Illuminate\Database\Seeder;
@@ -25,43 +27,19 @@
                 'email' => 'esnola@gmail.com',
                 'password' => Hash::make('12345678'),
             ]);*/
-   //         Speaker::factory(12)->create();
             //dd($user);
 //            dump($user);
 //            ray($user);
-//            User::factory()->create([
-//                'name' => 'JuanJota',
-//                'email' => 'esnola@gmail.com',
-//                'password' => Hash::make('12345678'),
-//            ]);
+            User::factory()->create([
+                'name' => 'JuanJota',
+                'email' => 'esnola@gmail.com',
+                'password' => Hash::make('12345678'),
+            ]);
             Venue::factory(12)->create();
-            /*    Venue::factory()->create( [
-                    'name' => 'Venue 1',
-                    'city' => $this->faker->city(),
-                    'country' => $this->faker->country(),
-                    'postal_code' => $this->faker->postcode(),
-                    'region' => $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']),
-                ]);
-                Venue::factory()->create( [
-                    'name' => 'Venue 2',
-                    'city' => $this->faker->city(),
-                    'country' => $this->faker->country(),
-                    'postal_code' => $this->faker->postcode(),
-                    'region' => $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']),
-                ]);
-                Venue::factory()->create( [
-                    'name' => 'Venue 3',
-                    'city' => $this->faker->city(),
-                    'country' => $this->faker->country(),
-                    'postal_code' => $this->faker->postcode(),
-                    'region' => $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']),
-                ]);
-                Venue::factory()->create( [
-                    'name' => 'Venue 2',
-                    'city' => $this->faker->city(),
-                    'country' => $this->faker->country(),
-                    'postal_code' => $this->faker->postcode(),
-                    'region' => $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']),
-                ]);*/
+            Conference::factory(12)->create();
+            Speaker::factory(12)->create();
+            Talk::factory(12)->create();
+
+
         }
     }

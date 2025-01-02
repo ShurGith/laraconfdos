@@ -18,20 +18,20 @@
 
         protected static ?string $navigationIcon = 'icon-conference';
         //protected static ?string $activeNavigationIcon = 'icon-conference-activa';
-        protected static ?int $navigationSort = 3;
+        protected static ?int $navigationSort = 2;
         //protected static ?string $navigationParentItem = 'Notifications';
 
-        protected static ?string $navigationGroup = 'Settings';
+        protected static ?string $navigationGroup = 'Configuraciones';
 
         public static function getNavigationBadge(): ?string
         {
             return static::getModel()::count();
         }
 
-        public static function getNavigationBadgeColor(): ?string
-        {
-            return static::getModel()::count() > 10 ? 'warning' : 'primary';
-        }
+//        public static function getNavigationBadgeColor(): ?string
+//        {
+//            return static::getModel()::count() > 10 ? 'warning' : 'primary';
+//        }
 
         public static function form(Form $form): Form
         {

@@ -20,21 +20,19 @@
         public function definition(): array
         {
             $region = self::region();
-            // $region = $this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online']);
             return [
                 'name' => $this->faker->name() . '- ' . $region,
                 'city' => $this->faker->city(),
                 'country' => $this->faker->country(),
                 'postal_code' => $this->faker->postcode(),
-                'region' => $region, //$this->faker->randomElement(['US', 'EU', 'AU', 'India', 'Online'])
+                'region' => $region,
             ];
         }
 
         public static function region(): string
         {
-            $sitios = ['US', 'EU', 'AU', 'India', 'Online'];
+            $sitios = ['US', 'EU', 'AU'];
             $value = array_rand($sitios);
-            //dd($sitios[$value]);
             return $sitios[$value];
 
         }
