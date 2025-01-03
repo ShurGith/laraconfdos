@@ -42,9 +42,9 @@
                     Widgets\FilamentInfoWidget::class,
                 ])->userMenuItems([
                     MenuItem::make()
-                        ->label('Settings')
-                        ->url(fn(): string => '/user/users/' . auth()->user()->id . '/edit')
-                        ->icon('heroicon-o-cog-6-tooth'),
+                        ->label('Conferencias')
+                        ->url(fn(): string => '/')
+                        ->icon('heroicon-o-megaphone'),
                     // ...
                 ])
                 ->middleware([

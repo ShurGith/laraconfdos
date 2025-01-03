@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\User\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\User\Resources\UserResource\Pages;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UserResource extends Resource
 {
@@ -21,6 +19,8 @@ class UserResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $record = $form->getRecord();
+
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
@@ -29,9 +29,15 @@ class UserResource extends Resource
                     ->email()
                     ->required(),
                 Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required(),
+                Forms\Components\FileUpload::make('avatar')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalExtension())
+                            ->prepend($record->name.'_'.now()->timestamp.'.'),
+                    )
+                    ->directory('user/avatars')
+                    ->avatar()
+                    ->imageEditor()
+                    ->circleCropper(),
             ]);
     }
 
@@ -41,6 +47,11 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('avatar')
+                    ->circular()
+                    ->defaultImageUrl(function ($record) {
+                        return 'https://ui-avatars.com/api/?background=random&color=fff&name='.urlencode($record->name);
+                    }),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
@@ -56,16 +67,16 @@ class UserResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
-            ])
+                    //
+                ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+                    Tables\Actions\EditAction::make(),
+                ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    ]),
+                ]);
     }
 
     public static function getRelations(): array
