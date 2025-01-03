@@ -9,6 +9,7 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+    use Illuminate\Database\Eloquent\Relations\HasMany;
 
     class Speaker extends Model
     {
@@ -42,7 +43,7 @@
                     ->directory('images/avatars/speakers')
                     ->preserveFilenames()
                     ->imageEditor()
-                    //->circleCropper()
+                    ->circleCropper()
                     ->maxSize(1024 * 1024 * 10),
                 TextInput::make('email')
                     ->email()
@@ -80,6 +81,12 @@
         public function conferences(): BelongsToMany
         {
             return $this->belongsToMany(Conference::class);
+        }
+
+
+        public function talks(): HasMany
+        {
+            return $this->hasMany(Talk::class);
         }
 
     }
