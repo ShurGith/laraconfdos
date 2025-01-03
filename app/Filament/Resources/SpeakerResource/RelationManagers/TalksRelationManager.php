@@ -2,6 +2,7 @@
 
     namespace App\Filament\Resources\SpeakerResource\RelationManagers;
 
+    use App\Enums\TalkLength;
     use App\Models\Talk;
     use Filament\Forms\Form;
     use Filament\Resources\RelationManagers\RelationManager;
@@ -29,6 +30,20 @@
                 ->recordTitleAttribute('title')
                 ->columns([
                     Tables\Columns\TextColumn::make('title'),
+                    Tables\Columns\TextColumn::make('status')
+                        ->badge()
+                        ->color(function ($state) {
+                            return $state->getColor();
+                        }),
+                    Tables\Columns\IconColumn::make('length')
+                        ->icon(function ($state) {
+                            return match ($state) {
+                                TalkLength::NORMAL => 'heroicon-o-megaphone',
+                                TalkLength::SHORT => 'heroicon-o-megaphone',
+                                TalkLength::LONG => 'heroicon-o-megaphone',
+                            };
+                        }),
+
                 ])
                 ->filters([
                     //
