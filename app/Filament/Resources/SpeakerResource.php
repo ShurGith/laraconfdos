@@ -133,7 +133,7 @@
         public static function getRelations(): array
         {
             return [
-                //
+                RelationManagers\TalksRelationManager::class,
             ];
         }
 
