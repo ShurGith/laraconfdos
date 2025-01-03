@@ -29,4 +29,27 @@
         {
             return $this->belongsToMany(Conference::class);
         }
+
+	    public function approve(): void
+        {
+             $this->status = TalkStatus::APPROVED;
+             //Aquì se puede enviar un email de aviso
+             $this->save();
+
+	    }
+
+        public function submit(): void
+        {
+            $this->status = TalkStatus::SUBMITTED;
+            //Aquì se puede enviar un email de aviso
+            $this->save();
+
+        }
+
+        public function reject(): void
+        {
+            $this->status = TalkStatus::REJECTED;
+            //Aquì se puede enviar un email de aviso
+            $this->save();
+        }
     }
