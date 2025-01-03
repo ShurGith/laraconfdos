@@ -1,30 +1,24 @@
 <?php
 
-namespace Database\Factories;
+    namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\Speaker;
-use App\Models\Talk;
+    use App\Enums\TalkLength;
+    use App\Enums\TalkStatus;
+    use App\Models\Talk;
+    use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TalkFactory extends Factory
-{
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Talk::class;
-
-    /**
-     * Define the model's default state.
-     */
-    public function definition(): array
+    class TalkFactory extends Factory
     {
-        return [
-            'title' => $this->faker->sentence(4),
-            'abstract' => $this->faker->text(),
-            'speaker_id' => Speaker::factory(),
-        ];
+        protected $model = Talk::class;
+
+        public function definition(): array
+        {
+            return [
+                'title' => $this->faker->sentence(4),
+                'abstract' => $this->faker->text(),
+                'speaker_id' => rand(1, 6),//Speaker::factory(),
+                'status' => $this->faker->randomElement([TalkStatus::APPROVED, TalkStatus::REJECTED, TalkStatus::SUBMITTED]),
+                'length' => $this->faker->randomElement([TalkLength::LIGHTNING, TalkLength::NORMAL, TalkLength::KEYNOTE]),
+            ];
+        }
     }
-}

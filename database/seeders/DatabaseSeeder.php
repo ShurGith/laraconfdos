@@ -2,12 +2,12 @@
 
     namespace Database\Seeders;
 
+    use App\Models\Attendee;
     use App\Models\Conference;
     use App\Models\Speaker;
     use App\Models\Talk;
     use App\Models\User;
     use App\Models\Venue;
-    use App\Models\Attendee;
     use Illuminate\Database\Seeder;
     use Illuminate\Support\Facades\Hash;
 
@@ -31,16 +31,15 @@
             //dd($user);
 //            dump($user);
 //            ray($user);
-//            User::factory()->create([
-//                'name' => 'JuanJota',
-//                'email' => 'esnola@gmail.com',
-//                'password' => Hash::make('12345678'),
-//            ]);
-//            Venue::factory(12)->create();
-//            Conference::factory(12)->create();
-//            Speaker::factory(12)->create();
-//            Talk::factory(12)->create();
-
-           Attendee::factory(12)->create();
+            User::factory()->create([
+                'name' => 'JuanJota',
+                'email' => 'esnola@gmail.com',
+                'password' => Hash::make('12345678'),
+            ]);
+            Venue::factory(12)->create();
+            Conference::factory(12)->create();
+            Speaker::factory(12)->create();
+            Talk::factory(12)->create();
+            Attendee::factory(12)->create();
         }
     }

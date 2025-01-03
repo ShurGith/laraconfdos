@@ -3,6 +3,7 @@
     namespace App\Filament\Resources\SpeakerResource\RelationManagers;
 
     use App\Enums\TalkLength;
+    use App\Enums\TalkStatus;
     use App\Models\Talk;
     use Filament\Forms\Form;
     use Filament\Resources\RelationManagers\RelationManager;
@@ -26,6 +27,7 @@
 
         public function table(Table $table): Table
         {
+            $visible = fn($record) => $record->status !== TalkStatus::APPROVED;
             return $table
                 ->recordTitleAttribute('title')
                 ->columns([
@@ -38,9 +40,9 @@
                     Tables\Columns\IconColumn::make('length')
                         ->icon(function ($state) {
                             return match ($state) {
-                                TalkLength::NORMAL => 'heroicon-o-megaphone',
-                                TalkLength::SHORT => 'heroicon-o-megaphone',
-                                TalkLength::LONG => 'heroicon-o-megaphone',
+                                TalkLength::LIGHTNING => 'heroicon-o-megaphone',
+                                TalkLength::NORMAL => 'heroicon-o-document-text',
+                                TalkLength::KEYNOTE => 'heroicon-o-finger-print',
                             };
                         }),
 
@@ -53,8 +55,10 @@
                 ])
                 ->actions([
                     Tables\Actions\EditAction::make()
-                    ->slideOver(),
-                    Tables\Actions\DeleteAction::make(),
+                        ->visible($visible)
+                        ->slideOver(),
+                    Tables\Actions\DeleteAction::make()
+                        ->visible($visible),
                 ])
                 ->bulkActions([
                     Tables\Actions\BulkActionGroup::make([

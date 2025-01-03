@@ -80,7 +80,10 @@
                         ->schema([
                             ImageEntry::make('avatar')
                                 ->label('Avatar')
-                                ->circular(),
+                                ->circular()
+                                ->defaultImageUrl(function ($record) {
+                                    return 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' . urlencode($record->name);
+                                }),
                             Group::make()
                                 ->columns(2)
                                 ->columnSpan(2)
